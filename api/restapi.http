@@ -1,8 +1,0 @@
-### GET Endpoint for Message of Welcome
-GET http://localhost:5000/
-
-### POST Endpoint for Register Users
-POST http://localhost:5000/api/users
-
-### POST Endpoint for Login Users
-POST http://localhost:5000/api/users/login
