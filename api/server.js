@@ -1,8 +1,8 @@
 const express = require("express");
+const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const colors = require("colors");
 const dotenv = require("dotenv").config();
-const connectDB = require("./config/db")
 
 // Connect Database
 connectDB();
@@ -28,5 +28,5 @@ app.use(errorHandler);
 
 // Listen the Server
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`.bgWhite);
 });
