@@ -33,7 +33,7 @@ function NewTicket() {
   }, [dispatch, isError, isSuccess, navigate, message]);
 
   const onSubmit = (e) => {
-    e.prevendDefault();
+    e.preventDefault();
     dispatch(createTicket({ product, description }));
   };
 
@@ -67,6 +67,7 @@ function NewTicket() {
               value={product}
               onChange={(e) => setProduct(e.target.value)}
             >
+              <option selected>Choose a Product</option>
               <option value="iPhone">iPhone</option>
               <option value="Macbook Pro">Macbook Pro</option>
               <option value="iMac">iMac</option>
