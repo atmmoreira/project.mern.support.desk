@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware/errorMiddleware");
@@ -15,16 +16,25 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Routes
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Welcome to Support Desk API",
-  });
-});
-
 // Users Routes
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/tickets", require("./routes/ticketRoutes"));
+
+// Server Frontend
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(__dirname, "../", "frontend", "build", "index.html")
+  );
+} else {
+  // Routes
+  app.get("/", (req, res) => {
+    res.status(200).json({
+      message: "Welcome to Support Desk API",
+    });
+  });
+}
 
 app.use(errorHandler);
 
