@@ -9,7 +9,7 @@ const dotenv = require("dotenv").config();
 connectDB();
 
 // Variables
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Instanciate Express
 const app = express();
