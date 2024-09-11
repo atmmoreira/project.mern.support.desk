@@ -4,6 +4,7 @@ const connectDB = require("./config/db");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const colors = require("colors");
 const dotenv = require("dotenv").config();
+import ServerlessHttp from "serverless-http";
 
 // Connect Database
 connectDB();
@@ -39,3 +40,5 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`.bgWhite);
 });
+
+export default handler = ServerlessHttp(app);
